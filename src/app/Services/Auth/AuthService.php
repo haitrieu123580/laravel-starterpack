@@ -27,7 +27,7 @@ class AuthService implements AuthServiceInterface
 
     public function login(LoginRequest $request)
     {
-        if (! $token = JWTAuth::attempt($request->only('email', 'password'), $request->boolean('remember'))) {
+        if (!$token = JWTAuth::attempt($request->only('email', 'password'), $request->boolean('remember'))) {
             return $this->respondUnAuthorizedRequest(ApiCode::INVALID_CREDENTIALS);
         }
 
@@ -62,7 +62,7 @@ class AuthService implements AuthServiceInterface
     public function forgotPassword(ForgotPasswordRequest $request)
     {
         $user = $this->userRepository->findBy('email', $request->email);
-        if (! (bool) $user) {
+        if (!(bool) $user) {
             return $this->respondWithMessage(ApiCode::EMAIL_NOT_FOUND);
         }
         $opt = $this->passwordResetRepository->createOTP($request->email);

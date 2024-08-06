@@ -16,15 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 require __DIR__ . '/auth.php';
 
-// Route::group(['middleware' => 'jwt.auth'], function () {
-//     Route::get('/users', SearchUserController::class);
-// });
 
 Route::group([], function () {
-    // Route::group(['prefix' => 'section'], function () {
-    //     Route::get('', [SectionController::class, 'index']);
-    //     Route::post('', [SectionLocaleController::class, 'store']);
-    // });
 });
 
 Route::group(['middleware' => ['jwt.auth', 'jwt.auth:' . RoleEnum::ADMINISTRATOR->value]], function () {

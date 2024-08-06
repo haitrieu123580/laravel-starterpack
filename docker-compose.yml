@@ -37,6 +37,7 @@ services:
       - app-network
   phpmyadmin:
     image: phpmyadmin:latest
+    container_name: phpmyadmin_${APP_NAME}
     ports:
       - 9001:80
     environment:

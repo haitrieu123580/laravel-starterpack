@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Providers;
+
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\User\UserRepository;
 use App\Repositories\User\UserRepositoryInterface;
 use App\Services\Auth\AuthService;
 use App\Services\Auth\AuthServiceInterface;
+use App\Repositories\PasswordReset\PasswordResetRepository;
+use App\Repositories\PasswordReset\PasswordResetRepositoryInterface;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -16,6 +19,7 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         // Repositories
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
+        $this->app->bind(PasswordResetRepositoryInterface::class, PasswordResetRepository::class);
 
         // Services
         $this->app->bind(AuthServiceInterface::class, AuthService::class);
