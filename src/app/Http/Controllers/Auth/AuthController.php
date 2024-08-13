@@ -14,6 +14,29 @@ class AuthController extends Controller
     ) {
         $this->middleware(['jwt.auth'], ['except' => ['login', 'register']]);
     }
+    /**
+     * @OA\Post(
+     *     path="/api/v1/auth/login",
+     *     tags={"auth"},
+     *     summary="Logs user into system",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"email", "password"},
+     *             @OA\Property(property="email", type="string", example="admin@admin.vn"),
+     *             @OA\Property(property="password", type="string", example="password")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid username/password supplied"
+     *     )
+     * )
+     */
 
     public function login(LoginRequest $request)
     {
