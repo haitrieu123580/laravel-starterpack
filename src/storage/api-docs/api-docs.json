@@ -1,0 +1,80 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Swagger with Laravel",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/v1/auth/login": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Logs user into system",
+                "operationId": "643b1ef568bcd820eda5f8d045a56929",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "admin@admin.vn"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid username/password supplied"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "auth",
+            "description": "auth"
+        }
+    ],
+    "components": {
+        "securitySchemes": {
+            "API_Key_Authorization": {
+                "type": "apiKey",
+                "description": "A short description for security scheme",
+                "name": "x-api-key",
+                "in": "header"
+            },
+            "bearerAuth": {
+                "type": "http",
+                "description": "A short description for security scheme",
+                "name": "Authorization",
+                "in": "header",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    },
+    "security": [
+        {
+            "API_Key_Authorization": [],
+            "bearerAuth": []
+        }
+    ]
+}
