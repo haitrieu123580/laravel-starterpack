@@ -13,5 +13,4 @@ Route::group(['prefix' => 'auth', 'as' => 'auth.'], function () {
     Route::post('/forgot-password', [ForgotPasswordController::class, 'store'])->name('password.email');
     Route::put('/reset-password', [NewPasswordController::class, 'store'])->name('password.store');
     Route::post('/register', [AuthController::class, 'register'])->name('register');
-    // Route::post('/change-password', [UserController::class, 'change_password_by_user'])->name('chang-pw');
 });
